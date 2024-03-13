@@ -5,16 +5,16 @@ const isMatch = (s, p) => {
     arr.push(s[i]);
     if (str[i] === arr[i] || str[i] == ".") {
       arr.pop();
-      str = str.slice(i + 1);
+      // str = str.slice(i + 1);
+      continue
     }
     if (str[i] == "*") {
-      let temp = arr[arr.length - 1];
-      let k = i;
-      while (temp == arr[k] && k >= 0) {
+      let temp = arr.pop();
+      while (temp == arr[arr.length-1] ) {
         arr.pop();
-        k--;
       }
-      str = str.slice(i + 1);
+      // str = str.slice(i + 1);
+      continue
     }
   }
   return arr.length == 0;
